@@ -5,7 +5,7 @@
         <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">
           Home
         </a>
-        <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/servers">Servers</a></li>
+        <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLink]="['/servers']">Servers</a></li>
         <li class="nav-item"><a class="nav-link" routerLinkActive="active" [routerLink]="['/users']">Users</a></li>
       </ul>
     </div>
