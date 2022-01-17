@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './AuthGuard';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.service';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
@@ -27,8 +28,13 @@ const routes: Routes = [
 
     ]
   },
+
+  { path: 'login', component: LoginComponent, pathMatch: "full" },
+
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Ooopsi! Page not found.'} },
-  { path: '**', redirectTo: '/not-found' }
+  { path: '**', redirectTo: '/not-found' },
+
+
 ];
 
 @NgModule({
