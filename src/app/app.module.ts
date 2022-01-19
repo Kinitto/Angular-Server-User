@@ -14,6 +14,8 @@ import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.service
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './servers/server-resolver.service';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     UsersModule,
-    ServersModule
+    ServersModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard, ServerResolver],
   bootstrap: [AppComponent]

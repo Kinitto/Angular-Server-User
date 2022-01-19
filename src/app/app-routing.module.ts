@@ -14,22 +14,26 @@ import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users/users.component';
 
 const routes: Routes = [
+
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+
   {
-    path: 'users', component: UsersComponent, children: [
+    path: 'users', component: UsersComponent, canActivate: [AuthGuard],children: [
       { path: ':id/:name', component: UserComponent },
     ]
   },
-  { path: '', component: HomeComponent },
+
   {
-     path: 'servers', canActivateChild: [AuthGuard], component: ServersComponent, children: [
-      { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard],resolve: { server: ServerResolver } },
-      { path: ':id', //canActivate:[AuthGuard],
-      component: ServerComponent }
+    path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+     { path: ':id/edit', component: EditServerComponent,resolve: { server: ServerResolver } },
+     { path: ':id', //canActivate:[AuthGuard],
+     component: ServerComponent }
 
-    ]
-  },
+   ]
+ },
 
-  { path: 'login', component: LoginComponent, pathMatch: "full" },
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
 
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Ooopsi! Page not found.'} },
   { path: '**', redirectTo: '/not-found' },
