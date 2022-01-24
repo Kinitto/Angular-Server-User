@@ -10,8 +10,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerResolver } from './servers/server-resolver.service';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersComponent } from './servers/servers/servers.component';
-import { UserComponent } from './users/user/user.component';
-import { UsersComponent } from './users/users/users.component';
+
 
 const routes: Routes = [
 
@@ -19,11 +18,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   {
-    path: 'users', component: UsersComponent, canActivate: [AuthGuard],children: [
-      { path: ':id/:name', component: UserComponent },
-    ]
+    path: 'users',
+    loadChildren: () => import('./users/users.module')
+    .then(m => m.UsersModule)
   },
+  {
 
+  },
   {
     path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
      { path: ':id/edit', component: EditServerComponent,resolve: { server: ServerResolver } },
@@ -36,7 +37,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent,canActivate: [AuthGuard]},
 
   { path: 'not-found', component: ErrorPageComponent, data: {message: 'Ooopsi! Page not found.'} },
-  { path: '**', redirectTo: '/not-found' },
 
 
 ];

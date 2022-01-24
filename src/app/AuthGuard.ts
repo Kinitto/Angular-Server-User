@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
           return true;
         } else {
           this.router.navigate(['/']);
-          alert("Login obligatorio para usar la App")
           return
         }
       }
