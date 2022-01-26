@@ -14,16 +14,14 @@ import { UsersComponent } from './pages/users/users/users.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
+    component: HomeComponent
   },
   {
     path: 'servers',
     component: ServersComponent,
     children: [
         {  path: ':id/edit', component: EditServerComponent,resolve: { server: ServerResolver }},
-        {path: ':id', //canActivate:[AuthGuard],
-     component: ServerComponent},
+        {path: ':id', component: ServerComponent},
         { path: '**', redirectTo: 'login'}
     ],
 },

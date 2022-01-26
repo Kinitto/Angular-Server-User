@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './auth/pages/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './AuthGuard';
-import { AuthService } from './auth/services/auth.service';
+import { AuthService } from './services/auth.service';
 import { CanDeactivateGuard } from './auth/pages/servers/edit-server/can-deactivate.service';
 import { ErrorPageComponent } from './auth/pages/error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
